@@ -6,12 +6,59 @@ import Input from '../../components/Inputs/Input'
 import ICONS from '../../assets/icons'
 import FilledButton from '../../components/Buttons/FilledButton'
 import styles from './utils/styles'
+import BackButton from '../../components/Utils/BackButton'
+import { getGoBackFunction } from '../../utils/functions'
+import InputIcon from '../../components/Inputs/InputIcon'
 
-const Registration = () => {
+const Registration = ({navigation}) => {
     const {height} = useWindowDimensions()
+    const goBack = getGoBackFunction(navigation)
     return(
         <SafeAreaView style={{backgroundColor: COLORS.white, flex:1}}>
-            <View style={{marginTop:80}}>
+            <View style={[{marginTop:47, marginHorizontal:24,}, STYLES.row,STYLES.spaced]}>
+                <BackButton onPress={goBack}/>
+                <View style={[STYLES.centersXY, {marginTop:20}]}>
+                    <Text style={[TEXTS.header, {fontSize:18}]}>Create an account</Text>
+                    <Text style={[TEXTS.poppinsRegular, {color:COLORS.primary}]}>Hey there,</Text>
+                </View>
+                <BackButton transparent/>
+            </View>
+            <View style={{marginTop:13.39, marginHorizontal:30}}>
+                <Input placeholder={"Name"}
+                icon={<InputIcon icon={ICONS.profile} width={18} height={18}/>}
+                />
+                <Input placeholder={"Email"}
+                style={STYLES.mt_16}
+                icon={<InputIcon icon={ICONS.email} width={15} height={13.5}/>}
+                />
+                <Input placeholder={"Phone"}
+                style={STYLES.mt_16}
+                icon={<InputIcon icon={ICONS.phone} width={18} height={18}/>}
+                />
+                <Input placeholder={"Home Address"}
+                style={STYLES.mt_16}
+                icon={<InputIcon icon={ICONS.edit} width={18} height={18}/>}
+                />
+                <Input placeholder={"Home Type"}
+                style={STYLES.mt_16}
+                icon={<InputIcon icon={ICONS.edit} width={18} height={18}/>}
+                />
+                <Input placeholder={"Family Size"}
+                style={STYLES.mt_16}
+                icon={<InputIcon icon={ICONS.edit} width={18} height={18}/>}
+                />
+                <View style={[STYLES.row, STYLES.mt_16]}>
+                    <Input style={{marginRight:17.5, flex:1}}
+                    placeholder="Males"
+                    type="numeric"
+                    />
+                    <Input style={{marginLeft:17.5, flex:1}}
+                    placeholder="Females"
+                    type="numeric"
+                    />
+                </View>
+            </View>
+            {/* <View style={{marginTop:80}}>
                 <Text style={[TEXTS.poppinsRegular, STYLES.centerText, {color: COLORS.primary}]}>
                     Hey there,
                 </Text>
@@ -46,7 +93,7 @@ const Registration = () => {
                     <Text style={[styles.belowText, {color:COLORS.primary}]}> Login</Text>
                 </View>
                 </View>
-            </View>
+            </View> */}
         </SafeAreaView>
     )
 }

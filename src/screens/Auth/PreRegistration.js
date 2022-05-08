@@ -6,9 +6,13 @@ import Input from '../../components/Inputs/Input'
 import ICONS from '../../assets/icons'
 import FilledButton from '../../components/Buttons/FilledButton'
 import styles from './utils/styles'
+import { getNavigateFunction } from '../../utils/functions'
+import { SCREENS } from '../../navigation/AppWrapper'
+import InputIcon from '../../components/Inputs/InputIcon'
 
-const PreRegistration = () => {
+const PreRegistration = ({navigation}) => {
     const {height} = useWindowDimensions()
+    const goToRegistration = getNavigateFunction(navigation, SCREENS.registration)
     return(
         <SafeAreaView style={{backgroundColor: COLORS.white, flex:1}}>
             <View style={{marginTop:80}}>
@@ -26,16 +30,17 @@ const PreRegistration = () => {
                 </View>
                 <View style={{marginTop:87, marginHorizontal: 30}}>
                     <Input
-                    icon={<Image source={ICONS.profile}
-                    style={{height:18, width:18}}
-                    resizeMode="cover"
-                    />
-                }
+                    icon={
+                    <InputIcon
+                        icon={ICONS.profile}
+                        height={18}
+                        width={18}
+                    />}
                     placeholder="Meter ID"
                     />
                 </View>
                 <View style={{marginHorizontal:30, marginTop:((238/812) * height)}}>
-                <FilledButton text={"Register"} fullWidth />
+                <FilledButton text={"Register"} fullWidth action={goToRegistration} />
                 <View style={[STYLES.row,STYLES.centersY, {marginHorizontal:30, marginTop:20 }]}>
                     <View style={styles.line}/>
                     <Text style={styles.orText}>Or</Text>

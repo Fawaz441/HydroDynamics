@@ -5,6 +5,11 @@ import Onboarding from '../screens/Onboarding'
 import Registration from '../screens/Auth/Registration';
 import PreRegistration from '../screens/Auth/PreRegistration';
 
+export const SCREENS = {
+    registration: "Registration",
+    onboarding:"Onboarding",
+    preregistration:"PreRegistration"
+}
 
 const Stack = createNativeStackNavigator()
 
@@ -12,9 +17,9 @@ const Stack = createNativeStackNavigator()
 const Navigation = () => {
     return(
         <Stack.Navigator initialRouteName='Onboarding' screenOptions={{headerShown:false}}>
-            <Stack.Screen name="Onboarding" component={Onboarding} />
-            <Stack.Screen name="PreRegistration" component={PreRegistration} />
-            <Stack.Screen name="Registration" component={Registration} />
+            <Stack.Screen name={SCREENS.onboarding} component={Onboarding} />
+            <Stack.Screen name={SCREENS.preregistration} component={PreRegistration} />
+            <Stack.Screen name={SCREENS.registration} component={Registration} />
         </Stack.Navigator>
     )
 }

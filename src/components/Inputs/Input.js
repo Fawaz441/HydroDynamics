@@ -14,18 +14,21 @@ const styles = StyleSheet.create({
         color: '#ADA4A5',
         fontFamily: 'Ambit-Regular',
         fontSize: 12,
-        padding:10,
+        paddingHorizontal:10,
+        paddingVertical:0,
+        flex:1
     }
 })
 
-const Input = ({placeholder, icon}) => {
+const Input = ({placeholder, icon, type, style={}}) => {
     return(
-        <View style={[STYLES.row, STYLES.centersY, styles.wrapper]}>
+        <View style={[STYLES.row, STYLES.centersY, styles.wrapper, style]}>
             {icon ? icon : null}
             <TextInput
             placeholder={placeholder}
             style={styles.textinput}
             placeholderTextColor={COLORS.grey3}
+            keyboardType={type ?? 'default'}
             />
         </View>
     )

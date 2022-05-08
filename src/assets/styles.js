@@ -57,11 +57,17 @@ const STYLES = {
     mt_8: {
         marginTop: 8,
     },
+    mt_16: {
+        marginTop:16
+    },
     mt_24: {
         marginTop: 24
     },
     centerText: {
         textAlign:'center'
+    },
+    spaced: {
+        justifyContent:'space-between'
     }
 };
 
