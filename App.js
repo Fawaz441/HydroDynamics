@@ -1,8 +1,14 @@
 import React from 'react';
-import {WelcomeScreen} from './src/screens/Onboarding';
+import AppWrapper from './src/navigation/AppWrapper';
+import {View} from 'react-native'
 
 const App = () => {
-    return <WelcomeScreen />;
+    return (
+        <View style={{flex:1}}>
+            <AppWrapper />
+        </View>
+    )
+    ;
 };
 
 export default App;

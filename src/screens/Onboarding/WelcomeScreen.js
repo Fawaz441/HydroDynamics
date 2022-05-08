@@ -1,31 +1,23 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, Image, ScrollView, StyleSheet} from 'react-native';
-import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
+import {View, Image, ScrollView, Text, useWindowDimensions} from 'react-native';
 import PrimaryButton from '@app/components/Buttons/PrimaryButton';
-import {STYLES, TEXTS, COLORS} from '@app/assets/styles';
+import {STYLES, TEXTS, COLORS} from '../../assets/styles';
+import StepButton from './utils/StepButton';
 
-const styles = StyleSheet.create({
-    startCover:{
-        bottom:0,
-        height:100
-    }
-})
-
-const WelcomeScreen = () => {
+const WelcomeScreen = ({next}) => {
     const {width, height} = useWindowDimensions();
     return (
         <View style={{flex: 1, backgroundColor: '#fff'}}>
             <ScrollView>
                 <Image
                     source={require('../../assets/images/blob.png')}
-                    style={{maxHeight: 0.5 * height, width}}
+                    style={{height: 0.5 * height, width}}
                     resizeMode="cover"
                 />
                 <View
                     style={{
-                        justifyContent: 'center',
-                        alignItems: 'center',
+                        ...STYLES.centersXY,
                         marginTop: 35,
                     }}>
                     <Image
@@ -36,9 +28,8 @@ const WelcomeScreen = () => {
                 </View>
                 <View
                     style={{
-                        justifyContent: 'center',
-                        flexDirection: 'row',
-                        alignItems: 'center',
+                        ...STYLES.row,
+                        ...STYLES.centersXY,
                         marginTop: 87,
                     }}>
                     <PrimaryButton
@@ -53,9 +44,7 @@ const WelcomeScreen = () => {
                     />
                 </View>
             </ScrollView>
-            <View style={[STYLES.absolute,]}>
-
-            </View>
+            <StepButton step={1} onPress={()=>next(1)}/>
         </View>
     );
 };
