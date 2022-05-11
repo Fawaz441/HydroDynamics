@@ -44,7 +44,7 @@ const WelcomeScreen = ({next}) => {
                     />
                 </View>
             </ScrollView>
-            <StepButton step={1} onPress={()=>next(1)}/>
+            <StepButton step={1} onPress={() => next(1)} />
         </View>
     );
 };

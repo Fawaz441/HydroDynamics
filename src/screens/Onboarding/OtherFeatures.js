@@ -12,19 +12,21 @@ const OtherFeatures = ({next}) => {
             <ScrollView>
                 <Image
                     source={require('../../assets/images/blob4.png')}
-                    style={{height: (466/812) * height, width}}
+                    style={{height: (466 / 812) * height, width}}
                     resizeMode="cover"
                 />
                 <View style={[STYLES.centersXY, STYLES.mt_8]}>
-                <Image
-                    source={require('../../assets/images/drop.png')}
-                    style={{height: 100, width: 71}}
-                    resizeMode="cover"
-                />
-                <Text style={[TEXTS.header, {marginTop:65.12}]}>Other Features</Text>
+                    <Image
+                        source={require('../../assets/images/drop.png')}
+                        style={{height: 100, width: 71}}
+                        resizeMode="cover"
+                    />
+                    <Text style={[TEXTS.header, {marginTop: 65.12}]}>
+                        Other Features
+                    </Text>
                 </View>
             </ScrollView>
-            <StepButton step={4} onPress={next}/>
+            <StepButton step={4} onPress={next} />
         </View>
     );
 };

@@ -6,7 +6,7 @@ import {TEXTS, COLORS, STYLES} from '../../assets/styles';
 
 const styles = StyleSheet.create({
     filledButton: {
-        height:60,
+        height: 60,
         shadowColor: '#000',
         shadowOpacity: 0.7,
         shadowRadius: 12,
@@ -16,18 +16,22 @@ const styles = StyleSheet.create({
         },
         borderRadius: 99,
         elevation: 2,
-        ...STYLES.centersXY
+        ...STYLES.centersXY,
+        ...STYLES.row,
     },
     buttonText: {
-        fontFamily:'Poppins-Regular',
+        fontFamily: 'Ambit-Bold',
         fontWeight: '700',
         color: COLORS.white,
         fontSize: 16,
-        ...STYLES.centerText
+        ...STYLES.centerText,
+    },
+    iconWrapper: {
+        marginRight: 12.5,
     },
 });
 
-const FilledButton = ({action, text, fullWidth}) => {
+const FilledButton = ({action, text, fullWidth, icon}) => {
     return (
         <TouchableWithoutFeedback onPress={action}>
             <LinearGradient
@@ -36,7 +40,7 @@ const FilledButton = ({action, text, fullWidth}) => {
                     styles.filledButton,
                     {alignSelf: fullWidth ? 'stretch' : 'flex-start'},
                 ]}>
-          
+                {icon && <View style={styles.iconWrapper}>{icon}</View>}
                 <Text style={styles.buttonText}>{text}</Text>
             </LinearGradient>
         </TouchableWithoutFeedback>

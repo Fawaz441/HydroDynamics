@@ -12,25 +12,36 @@ const MonitorConsumption = ({next}) => {
             <ScrollView>
                 <Image
                     source={require('../../assets/images/blob3.png')}
-                    style={{height: (373.16/812) * height, width}}
+                    style={{height: (373.16 / 812) * height, width}}
                     resizeMode="cover"
                 />
                 <View style={[STYLES.centersXY, STYLES.mt_8]}>
-                <Image
-                    source={require('../../assets/images/charts.png')}
-                    style={{height: (248/812) * height, width: (271/375) * width}}
-                    resizeMode="cover"
-                />
-                <Text style={[STYLES.mt_24, TEXTS.header]}>Monitor your water</Text>
-                <Text style={[TEXTS.header]}>consumption</Text>
-                <View style={STYLES.mt_24}>
-                    <Text style={[TEXTS.latoMedium, STYLES.centerText]}>You can easily monitor your water</Text>
-                    <Text style={[TEXTS.latoMedium, STYLES.centerText]}>consumption based on your</Text>
-                    <Text style={[TEXTS.latoMedium, STYLES.centerText]}>preference</Text>
-                </View>
+                    <Image
+                        source={require('../../assets/images/charts.png')}
+                        style={{
+                            height: (248 / 812) * height,
+                            width: (271 / 375) * width,
+                        }}
+                        resizeMode="cover"
+                    />
+                    <Text style={[STYLES.mt_24, TEXTS.header]}>
+                        Monitor your water
+                    </Text>
+                    <Text style={[TEXTS.header]}>consumption</Text>
+                    <View style={STYLES.mt_24}>
+                        <Text style={[TEXTS.latoMedium, STYLES.centerText]}>
+                            You can easily monitor your water
+                        </Text>
+                        <Text style={[TEXTS.latoMedium, STYLES.centerText]}>
+                            consumption based on your
+                        </Text>
+                        <Text style={[TEXTS.latoMedium, STYLES.centerText]}>
+                            preference
+                        </Text>
+                    </View>
                 </View>
             </ScrollView>
-            <StepButton step={3} onPress={()=>next(3)}/>
+            <StepButton step={3} onPress={() => next(3)} />
         </View>
     );
 };

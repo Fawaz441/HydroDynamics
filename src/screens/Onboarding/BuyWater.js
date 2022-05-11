@@ -12,23 +12,30 @@ const BuyWater = ({next}) => {
             <ScrollView>
                 <Image
                     source={require('../../assets/images/blob2.png')}
-                    style={{height: (302/812) * height, width}}
+                    style={{height: (302 / 812) * height, width}}
                     resizeMode="cover"
                 />
                 <View style={[STYLES.centersXY, STYLES.mt_8]}>
-                <Image
-                    source={require('../../assets/images/money-water-drop.png')}
-                    style={{height: (300/812) * height, width: (271/375) * width}}
-                    resizeMode="cover"
-                />
-                <Text style={[STYLES.mt_24, TEXTS.header]}>Buy Water</Text>
-                <View style={STYLES.mt_24}>
-                    <Text style={[TEXTS.latoMedium, STYLES.centerText]}>Buy water anytime anywhere with</Text>
-                    <Text style={[TEXTS.latoMedium, STYLES.centerText]}>ease, from your bank or USSD.</Text>
-                </View>
+                    <Image
+                        source={require('../../assets/images/money-water-drop.png')}
+                        style={{
+                            height: (300 / 812) * height,
+                            width: (271 / 375) * width,
+                        }}
+                        resizeMode="cover"
+                    />
+                    <Text style={[STYLES.mt_24, TEXTS.header]}>Buy Water</Text>
+                    <View style={STYLES.mt_24}>
+                        <Text style={[TEXTS.latoMedium, STYLES.centerText]}>
+                            Buy water anytime anywhere with
+                        </Text>
+                        <Text style={[TEXTS.latoMedium, STYLES.centerText]}>
+                            ease, from your bank or USSD.
+                        </Text>
+                    </View>
                 </View>
             </ScrollView>
-            <StepButton step={2} onPress={()=>next(2)}/>
+            <StepButton step={2} onPress={() => next(2)} />
         </View>
     );
 };
