@@ -7,11 +7,11 @@ import store from './src/store';
 
 const App = () => {
     return (
-        // <Provider store={store}>
-        <View style={{flex: 1}}>
-            <AppWrapper />
-        </View>
-        // </Provider>
+        <Provider store={store}>
+            <View style={{flex: 1}}>
+                <AppWrapper />
+            </View>
+        </Provider>
     );
 };
 

@@ -1,15 +1,12 @@
-/* eslint-disable react-native/no-inline-styles */
+import {DrawerContentScrollView} from '@react-navigation/drawer';
 import React from 'react';
-import {StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
-import {
-    DrawerContentScrollView,
-    DrawerItem,
-    DrawerItemList,
-} from '@react-navigation/drawer';
-import {COLORS, STYLES, TEXTS} from '../assets/styles';
-import {height, width} from '../utils/constants';
+import {StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native';
+import {useDispatch} from 'react-redux';
 import ICONS from '../assets/icons';
+import {COLORS, STYLES, TEXTS} from '../assets/styles';
 import Icon from '../components/Icon';
+import {logOut} from '../store/actions/auth';
+import {height} from '../utils/constants';
 import {SCREENS} from './screens';
 
 export const styles = StyleSheet.create({
@@ -131,8 +128,10 @@ const DrawerListItem = ({focused, label, icon, action}) => (
 );
 
 function CustomDrawerContent(props) {
+    const dispatch = useDispatch();
     const focusedRoute = props.state.routes[props.state.index];
     const isFocused = name => focusedRoute.name === name;
+    const logUserOut = () => dispatch(logOut());
     return (
         <View style={{flex: 1}}>
             <DrawerContentScrollView {...props} style={styles.wrapper}>
@@ -146,10 +145,12 @@ function CustomDrawerContent(props) {
                     />
                 ))}
             </DrawerContentScrollView>
-            <View style={styles.logOutContainer}>
-                <Icon icon={ICONS.logout} width={24} height={24} />
-                <Text style={styles.logout}>Log out</Text>
-            </View>
+            <TouchableWithoutFeedback onPress={logUserOut}>
+                <View style={styles.logOutContainer}>
+                    <Icon icon={ICONS.logout} width={24} height={24} />
+                    <Text style={styles.logout}>Log out</Text>
+                </View>
+            </TouchableWithoutFeedback>
         </View>
     );
 }

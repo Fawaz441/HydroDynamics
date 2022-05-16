@@ -20,6 +20,10 @@ const MainStackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name={SCREENS.home} component={Home} />
+            <Stack.Screen
+                name={SCREENS.reportleakage}
+                component={ReportLeakage}
+            />
         </Stack.Navigator>
     );
 };

@@ -1,26 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
-import React, {useMemo, useState, useCallback} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
+import {Text, TouchableWithoutFeedback, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {COLORS, STYLES, TEXTS} from '../../assets/styles';
-import {
-    View,
-    Text,
-    Image,
-    useWindowDimensions,
-    ScrollView,
-    TouchableWithoutFeedback,
-} from 'react-native';
-import Input from '../../components/Inputs/Input';
+import {useDispatch} from 'react-redux';
 import ICONS from '../../assets/icons';
-import styles from './utils/styles';
-import {BackButton, FilledButton} from '../../components/Buttons';
+import {COLORS, STYLES, TEXTS} from '../../assets/styles';
+import {FilledButton} from '../../components/Buttons';
 import InputIcon from '../../components/Icon';
-import CheckBox from '@react-native-community/checkbox';
-import OrText from './utils/OrText';
-import {getNavigateFunction} from '../../utils/functions';
-import {SCREENS} from '../../navigation/screens';
 import Dropdown from '../../components/Inputs/Dropdown';
+import Input from '../../components/Inputs/Input';
+import {SCREENS} from '../../navigation/screens';
+import {logIn} from '../../store/actions/auth';
+import {getNavigateFunction} from '../../utils/functions';
+import OrText from './utils/OrText';
+import styles from './utils/styles';
 
 const Login = ({navigation}) => {
     const goToRegistration = useCallback(
@@ -47,7 +41,8 @@ const Login = ({navigation}) => {
         ],
         [],
     );
-
+    const dispatch = useDispatch();
+    const logUserIn = () => dispatch(logIn());
     const [loginMethod, setLoginMethod] = useState('email');
     const [showMethodsDropdown, setShowMethodsDropdown] = useState(false);
     const selectedLoginMethod = loginMethods.find(_ => _.value === loginMethod);
@@ -153,7 +148,7 @@ const Login = ({navigation}) => {
                     <FilledButton
                         text={'Login'}
                         fullWidth
-                        action={goToHome}
+                        action={logUserIn}
                         icon={
                             <InputIcon
                                 width={19}

@@ -11,13 +11,15 @@ import CustomDrawerContent from './DrawerContent';
 import Profile from '../screens/Profile';
 import {About, CustomerService, History} from '../screens/Utils';
 import ReportLeakage from '../screens/Utils/ReportLeakage';
+import {useSelector} from 'react-redux';
 
 const Stack = createNativeStackNavigator();
 
 const Drawer = createDrawerNavigator();
 
 const Navigation = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const {isAuthenticated} = useSelector(state => state.auth);
+    console.log(isAuthenticated);
     if (isAuthenticated) {
         return (
             <Drawer.Navigator
