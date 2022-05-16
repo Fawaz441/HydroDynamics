@@ -31,17 +31,22 @@ const styles = StyleSheet.create({
     },
 });
 
-const FilledButton = ({action, text, fullWidth, icon}) => {
+const FilledButton = ({action, text, fullWidth, icon, style, iconStyle}) => {
     return (
         <TouchableWithoutFeedback onPress={action}>
             <LinearGradient
                 colors={[COLORS.primary2, COLORS.primary]}
                 style={[
                     styles.filledButton,
+                    style,
                     {alignSelf: fullWidth ? 'stretch' : 'flex-start'},
                 ]}>
-                {icon && <View style={styles.iconWrapper}>{icon}</View>}
-                <Text style={styles.buttonText}>{text}</Text>
+                {icon && (
+                    <View style={[styles.iconWrapper, iconStyle]}>{icon}</View>
+                )}
+                <Text numberOfLines={1} style={styles.buttonText}>
+                    {text}
+                </Text>
             </LinearGradient>
         </TouchableWithoutFeedback>
     );

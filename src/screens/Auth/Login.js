@@ -19,7 +19,7 @@ import InputIcon from '../../components/Icon';
 import CheckBox from '@react-native-community/checkbox';
 import OrText from './utils/OrText';
 import {getNavigateFunction} from '../../utils/functions';
-import {SCREENS} from '../../navigation/AppWrapper';
+import {SCREENS} from '../../navigation/screens';
 import Dropdown from '../../components/Inputs/Dropdown';
 
 const Login = ({navigation}) => {
@@ -79,7 +79,9 @@ const Login = ({navigation}) => {
             <View>
                 <View style={{marginTop: 13.39, marginHorizontal: 30}}>
                     <Input
-                        placeholder={selectedLoginMethod.label}
+                        placeholder={
+                            showMethodsDropdown ? '' : selectedLoginMethod.label
+                        }
                         textContentType={
                             isEmail ? 'emailAddress' : 'telephoneNumber'
                         }
@@ -93,7 +95,11 @@ const Login = ({navigation}) => {
                                 onPress={() => setShowMethodsDropdown(true)}
                             />
                         }
-                        icon={selectedLoginMethod.icon()}>
+                        icon={
+                            showMethodsDropdown
+                                ? null
+                                : selectedLoginMethod.icon()
+                        }>
                         {showMethodsDropdown && (
                             <View
                                 style={[

@@ -15,6 +15,20 @@ const ICONS = {
     bold_error: require('./bold-error.png'),
     water_drop: require('./water-drop.png'),
     play: require('./play.png'),
+    home: require('./home.png'),
+    profile_round: require('./profile-round.png'),
+    arrow_right: require('./arrow_right.png'),
+    logout: require('./logout.png'),
+    history: require('./history.png'),
+    customer_service: require('./customer_service.png'),
+    info_circle: require('./info-circle.png'),
+    blue_arrow_down: require('./blue_arrow_down.png'),
+    blue_arrow_up: require('./blue_arrow_up.png'),
+    play_button: require('./play_button.png'),
+    tab_message: require('./tab-message.png'),
+    tab_profile: require('./tab-profile.png'),
+    tab_document: require('./tab-document.png'),
+    tab_home: require('./tab-home.png'),
 };
 
 export default ICONS;

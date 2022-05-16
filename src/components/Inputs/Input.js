@@ -36,6 +36,7 @@ const Input = ({
     type,
     style = {},
     children,
+    inputStyle,
     ...rest
 }) => {
     const [isSecureEntry, setisSecureEntry] = useState(!!rest.secureTextEntry);
@@ -46,10 +47,11 @@ const Input = ({
             {icon ? icon : null}
             <TextInput
                 placeholder={placeholder}
-                style={styles.textinput}
+                style={[styles.textinput, inputStyle]}
                 placeholderTextColor={COLORS.grey3}
                 keyboardType={type ?? 'default'}
                 secureTextEntry={isSecureEntry}
+                {...rest}
             />
             {rightIcon && (
                 <View style={styles.rightIconwrapper}>{rightIcon}</View>

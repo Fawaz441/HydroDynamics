@@ -1,11 +1,24 @@
 import React from 'react';
 import {Image, TouchableWithoutFeedback} from 'react-native';
 
-const Icon = ({icon, width, height, onPress}) => {
+const Icon = ({icon, width, height, onPress, resizeMode, style = {}}) => {
+    if (onPress) {
+        return (
+            <TouchableWithoutFeedback {...{onPress}}>
+                <Image
+                    source={icon}
+                    style={{width, height, ...style}}
+                    resizeMode="cover"
+                />
+            </TouchableWithoutFeedback>
+        );
+    }
     return (
-        <TouchableWithoutFeedback {...{onPress}} hitSlop={[100, 100, 100, 100]}>
-            <Image source={icon} style={{width, height}} resizeMode="cover" />
-        </TouchableWithoutFeedback>
+        <Image
+            source={icon}
+            style={{width, height, ...style, flexShrink: 0}}
+            resizeMode={resizeMode ?? 'cover'}
+        />
     );
 };
 

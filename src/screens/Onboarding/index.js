@@ -6,7 +6,7 @@ import MonitorConsumption from './MonitorConsumption';
 import OtherFeatures from './OtherFeatures';
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
 import {getNavigateFunction} from '../../utils/functions';
-import {SCREENS} from '../../navigation/AppWrapper';
+import {SCREENS} from '../../navigation/screens';
 
 const Onboarding = ({navigation}) => {
     const scrollRef = React.useRef();

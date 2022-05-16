@@ -3,6 +3,7 @@ const COLORS = {
     primary2: '#109CF1',
     grey: '#979797',
     white: '#FFF',
+    offwhite: '#F8F8FA',
     grey2: '#F3F5F9',
     grey3: '#ADA4A5',
     lightblue: '#EDF1FA',
@@ -66,6 +67,9 @@ const STYLES = {
     },
     mt_24: {
         marginTop: 24,
+    },
+    mt_32: {
+        marginTop: 32,
     },
     mt_40: {
         marginTop: 40,

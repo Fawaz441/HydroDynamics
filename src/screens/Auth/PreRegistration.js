@@ -15,7 +15,7 @@ import ICONS from '../../assets/icons';
 import FilledButton from '../../components/Buttons/FilledButton';
 import styles from './utils/styles';
 import {getNavigateFunction} from '../../utils/functions';
-import {SCREENS} from '../../navigation/AppWrapper';
+import {SCREENS} from '../../navigation/screens';
 import InputIcon from '../../components/Icon';
 import OrText from './utils/OrText';
 

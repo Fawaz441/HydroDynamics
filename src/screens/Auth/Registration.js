@@ -19,7 +19,7 @@ import {getGoBackFunction, getNavigateFunction} from '../../utils/functions';
 import InputIcon from '../../components/Icon';
 import CheckBox from '@react-native-community/checkbox';
 import OrText from './utils/OrText';
-import {SCREENS} from '../../navigation/AppWrapper';
+import {SCREENS} from '../../navigation/screens';
 
 const Registration = ({navigation}) => {
     const {height} = useWindowDimensions();
