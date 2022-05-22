@@ -29,6 +29,14 @@ const ICONS = {
     tab_profile: require('./tab-profile.png'),
     tab_document: require('./tab-document.png'),
     tab_home: require('./tab-home.png'),
+    swap: require('./swap.png'),
+    card: require('./card.png'),
+    house: require('./house.png'),
+    ellipsis: require('./ellipsis.png'),
+    tick: require('./tick.png'),
+    delivered: require('./delivered.png'),
+    plus: require('./plus.png'),
+    send: require('./send.png'),
 };
 
 export default ICONS;

@@ -5,7 +5,8 @@ import PrimaryButton from '@app/components/Buttons/PrimaryButton';
 import {STYLES, TEXTS, COLORS} from '../../assets/styles';
 import StepButton from './utils/StepButton';
 
-const WelcomeScreen = ({next}) => {
+const WelcomeScreen = ({next, reportLeakage}) => {
+    console.log(reportLeakage);
     const {width, height} = useWindowDimensions();
     return (
         <View style={{flex: 1, backgroundColor: '#fff'}}>
@@ -33,6 +34,7 @@ const WelcomeScreen = ({next}) => {
                         marginTop: 87,
                     }}>
                     <PrimaryButton
+                        action={reportLeakage}
                         text="Report leakage"
                         icon={
                             <Image

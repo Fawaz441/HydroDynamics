@@ -9,13 +9,35 @@ import BottomTabNavigator from './TabNavigation';
 import {SCREENS} from './screens';
 import CustomDrawerContent from './DrawerContent';
 import Profile from '../screens/Profile';
-import {About, CustomerService, History} from '../screens/Utils';
-import ReportLeakage from '../screens/Utils/ReportLeakage';
+import {About, CustomerService, History} from '../screens/Utility';
+import ReportLeakage from '../screens/Utility/ReportLeakage';
 import {useSelector} from 'react-redux';
+import BuyWater from '../screens/Utility/BuyWater';
+import Payment from '../screens/Utility/Payment';
+import CardEntryPage from '../screens/Utility/CardEntryPage';
+import PaymentSuccessPage from '../screens/Utility/PaymentSuccessPage';
 
 const Stack = createNativeStackNavigator();
 
 const Drawer = createDrawerNavigator();
+
+const TablessPages = () => {
+    return (
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+            <Stack.Screen
+                name={SCREENS.reportleakage}
+                component={ReportLeakage}
+            />
+            <Stack.Screen name={SCREENS.buywater} component={BuyWater} />
+            <Stack.Screen name={SCREENS.payment} component={Payment} />
+            <Stack.Screen name={SCREENS.cardentry} component={CardEntryPage} />
+            <Stack.Screen
+                name={SCREENS.paymentsuccess}
+                component={PaymentSuccessPage}
+            />
+        </Stack.Navigator>
+    );
+};
 
 const Navigation = () => {
     const {isAuthenticated} = useSelector(state => state.auth);
@@ -28,14 +50,18 @@ const Navigation = () => {
                     overlayColor: 'transparent',
                 }}
                 drawerContent={props => <CustomDrawerContent {...props} />}>
-                <Drawer.Screen name="HomeTab" component={BottomTabNavigator} />
-                <Drawer.Screen name={SCREENS.profile} component={Profile} />
-                <Drawer.Screen name={SCREENS.history} component={History} />
-                <Drawer.Screen name={SCREENS.about} component={About} />
                 <Drawer.Screen
+                    name="BottomTab"
+                    component={BottomTabNavigator}
+                />
+                <Drawer.Screen name={SCREENS.profile} component={Profile} />
+                <Drawer.Screen name={SCREENS.about} component={About} />
+                <Drawer.Screen name={'TablessPages'} component={TablessPages} />
+                {/* <Drawer.Screen name={SCREENS.buywater} component={BuyWater} /> */}
+                {/* <Drawer.Screen
                     name={SCREENS.customerservice}
                     component={CustomerService}
-                />
+                /> */}
             </Drawer.Navigator>
         );
     }
@@ -58,6 +84,7 @@ const Navigation = () => {
                 name={SCREENS.reportleakage}
                 component={ReportLeakage}
             />
+            <Stack.Screen name={SCREENS.buywater} component={BuyWater} />
         </Stack.Navigator>
     );
 };

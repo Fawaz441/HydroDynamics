@@ -5,7 +5,7 @@ import React from 'react';
 import MonitorConsumption from './MonitorConsumption';
 import OtherFeatures from './OtherFeatures';
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
-import {getNavigateFunction} from '../../utils/functions';
+import {getNavigateFunction, goToTablessScreen} from '../../utils/functions';
 import {SCREENS} from '../../navigation/screens';
 
 const Onboarding = ({navigation}) => {
@@ -17,6 +17,10 @@ const Onboarding = ({navigation}) => {
         navigation,
         SCREENS.preregistration,
     );
+    const reportLeakage = getNavigateFunction(
+        navigation,
+        SCREENS.reportleakage,
+    );
     return (
         <ScrollView
             horizontal
@@ -24,7 +28,7 @@ const Onboarding = ({navigation}) => {
             pagingEnabled
             scrollEventThrottle={16}
             ref={scrollRef}>
-            <WelcomeScreen next={scrollTo} />
+            <WelcomeScreen next={scrollTo} reportLeakage={reportLeakage} />
             <BuyWater next={scrollTo} />
             <MonitorConsumption next={scrollTo} />
             <OtherFeatures next={goToPreRegistration} />

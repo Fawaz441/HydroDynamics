@@ -5,6 +5,7 @@ import {useDispatch} from 'react-redux';
 import ICONS from '../assets/icons';
 import {COLORS, STYLES, TEXTS} from '../assets/styles';
 import Icon from '../components/Icon';
+import useUI from '../hooks/useUI';
 import {logOut} from '../store/actions/auth';
 import {height} from '../utils/constants';
 import {SCREENS} from './screens';
@@ -45,39 +46,6 @@ export const styles = StyleSheet.create({
         marginLeft: 16,
     },
 });
-
-const links = navigation => [
-    {
-        name: SCREENS.home,
-        alias: 'HomeTab',
-        icon: ICONS.home,
-        onClick: () => navigation.navigate(SCREENS.home),
-    },
-    {
-        name: SCREENS.profile,
-        alias: SCREENS.profile,
-        icon: ICONS.profile_round,
-        onClick: () => navigation.navigate(SCREENS.profile),
-    },
-    {
-        name: SCREENS.history,
-        alias: SCREENS.history,
-        icon: ICONS.history,
-        onClick: () => navigation.navigate(SCREENS.history),
-    },
-    {
-        name: SCREENS.about,
-        alias: SCREENS.about,
-        icon: ICONS.info_circle,
-        onClick: () => navigation.navigate(SCREENS.about),
-    },
-    {
-        name: SCREENS.customerservice,
-        alias: SCREENS.customerservice,
-        icon: ICONS.customer_service,
-        onClick: () => navigation.navigate(SCREENS.customerservice),
-    },
-];
 
 const getIcon = (icon, focused) => (
     <Icon
@@ -129,16 +97,65 @@ const DrawerListItem = ({focused, label, icon, action}) => (
 
 function CustomDrawerContent(props) {
     const dispatch = useDispatch();
-    const focusedRoute = props.state.routes[props.state.index];
-    const isFocused = name => focusedRoute.name === name;
+    const {activePage, setPage} = useUI();
     const logUserOut = () => dispatch(logOut());
+
+    const handlePage = page => {
+        setPage(page);
+    };
+
+    const links = [
+        {
+            name: SCREENS.home,
+            alias: SCREENS.home,
+            icon: ICONS.home,
+            onClick: () => {
+                handlePage(SCREENS.home);
+                props.navigation.navigate('BottomTab', {screen: 'HomeTab'});
+            },
+        },
+        {
+            name: SCREENS.profile,
+            alias: SCREENS.profile,
+            icon: ICONS.profile_round,
+            onClick: () => {
+                handlePage(SCREENS.profile);
+                props.navigation.navigate('BottomTab', {screen: 'ProfileTab'});
+            },
+        },
+        {
+            name: SCREENS.history,
+            alias: SCREENS.history,
+            icon: ICONS.history,
+            onClick: () => {
+                handlePage(SCREENS.history);
+                props.navigation.navigate('BottomTab', {screen: 'HistoryTab'});
+            },
+        },
+        {
+            name: SCREENS.about,
+            alias: SCREENS.about,
+            icon: ICONS.info_circle,
+            onClick: () => props.navigation.navigate(SCREENS.about),
+        },
+        {
+            name: SCREENS.customerservice,
+            alias: SCREENS.customerservice,
+            icon: ICONS.customer_service,
+            onClick: () => {
+                handlePage(SCREENS.customerservice);
+                props.navigation.navigate('BottomTab', {screen: 'ChatTab'});
+            },
+        },
+    ];
+
     return (
         <View style={{flex: 1}}>
             <DrawerContentScrollView {...props} style={styles.wrapper}>
-                {links(props.navigation).map((link, index) => (
+                {links.map((link, index) => (
                     <DrawerListItem
                         key={index}
-                        focused={isFocused(link.alias)}
+                        focused={activePage === link.alias}
                         label={link.name}
                         icon={link.icon}
                         action={link.onClick}

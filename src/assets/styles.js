@@ -37,6 +37,11 @@ const TEXTS = {
         fontFamily: 'Ambit-SemiBold',
         fontSize: 14,
     },
+    abeezee: {
+        fontFamily: 'ABeeZee-Regular',
+        fontSize: 14,
+        color: '#000',
+    },
 };
 
 const STYLES = {
@@ -59,6 +64,7 @@ const STYLES = {
     mt_8: {
         marginTop: 8,
     },
+    mt_10: {marginTop: 10},
     mt_14: {
         marginTop: 14,
     },

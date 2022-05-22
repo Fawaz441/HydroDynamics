@@ -11,4 +11,8 @@ export const SCREENS = {
     reportleakage: 'Report Leakage',
     chat: 'Chat',
     documents: 'Documents',
+    buywater: 'BuyWater',
+    payment: 'Payment',
+    cardentry: 'Card Entry',
+    paymentsuccess: 'Payment Success',
 };

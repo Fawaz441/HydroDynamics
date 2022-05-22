@@ -64,34 +64,33 @@ const styles = StyleSheet.create({
         zIndex: 1,
         elevation: 1,
     },
+    header1: {
+        ...TEXTS.header,
+        color: '#161626',
+        fontWeight: '300',
+    },
+    header2: {
+        ...TEXTS.header,
+        fontSize: 18,
+        color: '#79797F',
+        fontWeight: '300',
+    },
+    dot: {
+        height: 9,
+        width: 9,
+    },
 });
-
-const data = {
-    labels: ['Swim'], // optional
-    data: [0.6],
-};
 
 const data2 = [
     {
-        name: 'Seoul',
+        name: 'Amount Bought',
         population: 21500000,
-        color: 'rgba(131, 167, 234, 1)',
-        legendFontColor: '#26CBFF',
-        legendFontSize: 15,
+        color: 'rgba(40, 66, 143, 1)',
     },
     {
-        name: 'Toronto',
+        name: 'Amount Remaining',
         population: 2800000,
-        color: '#109CF1',
-        legendFontColor: '#7F7F7F',
-        legendFontSize: 15,
-    },
-    {
-        name: 'Beijing',
-        population: 527612,
-        color: '#26CBFF',
-        legendFontColor: '#7F7F7F',
-        legendFontSize: 15,
+        color: 'rgba(78, 210, 253, 1)',
     },
 ];
 
@@ -150,7 +149,8 @@ export const WaterUsageProgressChart = () => (
         <View style={styles.progressChartOuterWrapper}>
             <View style={styles.progressChartStat}>
                 <View style={styles.progressStatCircle} />
-                <Text>Hello</Text>
+                <Text style={styles.header1}>300</Text>
+                <Text style={styles.header2}>Liters</Text>
             </View>
             <View style={styles.progressChart}>
                 <ActivityRings data={activityData} config={activityConfig} />
@@ -193,6 +193,21 @@ export const WaterUsageProgressChart = () => (
 export const WaterQuantityPieChart = () => (
     <View style={styles.chartContainer}>
         <View style={[STYLES.centersXY]}>
+            <View style={STYLES.row}>
+                <View style={[styles.dot, {backgroundColor: '#2F80ED'}]} />
+                <View style={[{marginLeft: 6}, STYLES.centersXY]}>
+                    <Text style={[styles.header1, {fontSize: 13}]}>
+                        Amount bought
+                    </Text>
+                    <Text
+                        style={[
+                            styles.header1,
+                            {fontSize: 13, color: '#79797F'},
+                        ]}>
+                        700 Liters
+                    </Text>
+                </View>
+            </View>
             <PieChart
                 data={data2}
                 width={width < 375 ? '100%' : (width - 100) / 2}
@@ -205,6 +220,21 @@ export const WaterQuantityPieChart = () => (
                 absolute
                 hasLegend={false}
             />
+            <View style={STYLES.row}>
+                <View style={[styles.dot, {backgroundColor: '#4ED2FD'}]} />
+                <View style={[{marginLeft: 6}, STYLES.centersXY]}>
+                    <Text style={[styles.header1, {fontSize: 13}]}>
+                        Amount Remaining
+                    </Text>
+                    <Text
+                        style={[
+                            styles.header1,
+                            {fontSize: 13, color: '#79797F'},
+                        ]}>
+                        500 liters
+                    </Text>
+                </View>
+            </View>
         </View>
     </View>
 );

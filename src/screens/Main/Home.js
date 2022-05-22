@@ -18,7 +18,7 @@ import Container from '../../components/Utils/Container';
 import SpaceFiller from '../../components/Utils/SpaceFiller';
 import TopBar from '../../components/Utils/TopBar';
 import {SCREENS} from '../../navigation/screens';
-import {getNavigateFunction} from '../../utils/functions';
+import {getNavigateFunction, goToTablessScreen} from '../../utils/functions';
 import {
     HomeButton,
     WaterQuantityPieChart,
@@ -83,6 +83,8 @@ const Home = ({navigation}) => {
         navigation,
         SCREENS.reportleakage,
     );
+    const buyWater = goToTablessScreen(navigation, SCREENS.buywater);
+
     return (
         <Container>
             <TopBar>
@@ -119,6 +121,7 @@ const Home = ({navigation}) => {
                 <View style={[STYLES.centersXY, STYLES.row]}>
                     <View style={styles.homeButton}>
                         <HomeButton
+                            action={buyWater}
                             icon={
                                 <Icon
                                     icon={ICONS.water_drop}

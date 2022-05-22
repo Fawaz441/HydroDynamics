@@ -3,15 +3,17 @@ import {Image, View, StyleSheet, TouchableWithoutFeedback} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Chat from '../screens/Chat';
-import Documents from '../screens/Documents';
+import History from '../screens/Utility/History';
 import {Home} from '../screens/Main';
 import Profile from '../screens/Profile';
 import {SCREENS} from './screens';
-import ReportLeakage from '../screens/Utils/ReportLeakage';
+import ReportLeakage from '../screens/Utility/ReportLeakage';
 import {COLORS, STYLES} from '../assets/styles';
 import {FilledButton} from '../components/Buttons';
 import Icon from '../components/Icon';
 import ICONS from '../assets/icons';
+import useUI from '../hooks/useUI';
+import {BOTTOM_TAB_HEIGHT} from '../utils/constants';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -20,10 +22,6 @@ const MainStackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name={SCREENS.home} component={Home} />
-            <Stack.Screen
-                name={SCREENS.reportleakage}
-                component={ReportLeakage}
-            />
         </Stack.Navigator>
     );
 };
@@ -31,7 +29,7 @@ const MainStackNavigator = () => {
 const ChatStackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="Chat" component={Chat} />
+            <Stack.Screen name={SCREENS.chat} component={Chat} />
         </Stack.Navigator>
     );
 };
@@ -44,10 +42,10 @@ const ProfileStackNavigator = () => {
     );
 };
 
-const DocumentsStackNavigator = () => {
+const HistoryStackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="Documents" component={Documents} />
+            <Stack.Screen name={SCREENS.history} component={History} />
         </Stack.Navigator>
     );
 };
@@ -79,15 +77,20 @@ const styles = StyleSheet.create({
 
 const tabIcons = {
     [SCREENS.home]: ICONS.tab_home,
-    [SCREENS.chat]: ICONS.tab_message,
+    [SCREENS.customerservice]: ICONS.tab_message,
     [SCREENS.profile]: ICONS.tab_profile,
-    [SCREENS.documents]: ICONS.tab_document,
+    [SCREENS.history]: ICONS.tab_document,
 };
 
 const CustomTabBarButton = ({accessibilityState, onPress, name}) => {
     const isFocused = accessibilityState.selected;
+    const {setPage} = useUI();
+    const onPressButton = () => {
+        onPress();
+        setPage(name);
+    };
     return (
-        <TouchableWithoutFeedback {...{onPress}}>
+        <TouchableWithoutFeedback onPress={onPressButton}>
             <View style={{flex: 1}}>
                 {isFocused ? (
                     <View style={styles.tabButton}>
@@ -100,7 +103,9 @@ const CustomTabBarButton = ({accessibilityState, onPress, name}) => {
                                     resizeMode="contain"
                                 />
                             }
-                            text={name}
+                            text={
+                                name === SCREENS.customerservice ? 'Chat' : name
+                            }
                             iconStyle={{marginRight: 8}}
                         />
                     </View>
@@ -127,7 +132,7 @@ const BottomTabNavigator = () => {
                 headerShown: false,
                 tabBarStyle: {
                     display: getTabBarDisplay(route?.name),
-                    height: 80,
+                    height: BOTTOM_TAB_HEIGHT,
                     margin: 0,
                     padding: 0,
                     backgroundColor: COLORS.white,
@@ -138,10 +143,17 @@ const BottomTabNavigator = () => {
                     ...STYLES.absolute,
                     bottom: 0,
                     left: 0,
+                    shadowColor: '#000',
+                    shadowOpacity: 0.25,
+                    shadowRadius: 5,
+                    shadowOffset: {
+                        height: 4,
+                        width: 0,
+                    },
                 },
             })}>
             <Tab.Screen
-                name={SCREENS.home}
+                name={'HomeTab'}
                 component={MainStackNavigator}
                 options={{
                     tabBarButton: props => (
@@ -150,16 +162,19 @@ const BottomTabNavigator = () => {
                 }}
             />
             <Tab.Screen
-                name={SCREENS.chat}
+                name={'ChatTab'}
                 component={ChatStackNavigator}
                 options={{
                     tabBarButton: props => (
-                        <CustomTabBarButton {...props} name={SCREENS.chat} />
+                        <CustomTabBarButton
+                            {...props}
+                            name={SCREENS.customerservice}
+                        />
                     ),
                 }}
             />
             <Tab.Screen
-                name={SCREENS.profile}
+                name={'ProfileTab'}
                 component={ProfileStackNavigator}
                 options={{
                     tabBarButton: props => (
@@ -168,14 +183,11 @@ const BottomTabNavigator = () => {
                 }}
             />
             <Tab.Screen
-                name={SCREENS.documents}
-                component={DocumentsStackNavigator}
+                name={'HistoryTab'}
+                component={HistoryStackNavigator}
                 options={{
                     tabBarButton: props => (
-                        <CustomTabBarButton
-                            {...props}
-                            name={SCREENS.documents}
-                        />
+                        <CustomTabBarButton {...props} name={SCREENS.history} />
                     ),
                 }}
             />
