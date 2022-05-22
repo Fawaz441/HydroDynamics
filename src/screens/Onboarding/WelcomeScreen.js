@@ -4,6 +4,7 @@ import {View, Image, ScrollView, Text, useWindowDimensions} from 'react-native';
 import PrimaryButton from '@app/components/Buttons/PrimaryButton';
 import {STYLES, TEXTS, COLORS} from '../../assets/styles';
 import StepButton from './utils/StepButton';
+import SpaceFiller from '../../components/Utils/SpaceFiller';
 
 const WelcomeScreen = ({next, reportLeakage}) => {
     console.log(reportLeakage);
@@ -45,6 +46,7 @@ const WelcomeScreen = ({next, reportLeakage}) => {
                         }
                     />
                 </View>
+                <SpaceFiller space={200} />
             </ScrollView>
             <StepButton step={1} onPress={() => next(1)} />
         </View>

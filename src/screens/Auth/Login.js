@@ -166,7 +166,7 @@ const Login = ({navigation}) => {
                                 STYLES.centersXY,
                                 {marginBottom: 44},
                             ]}>
-                            <Text style={TEXTS.primary}>
+                            <Text style={[TEXTS.primary, {color: '#1D1617'}]}>
                                 Don’t have an account yet?{' '}
                             </Text>
                             <Text

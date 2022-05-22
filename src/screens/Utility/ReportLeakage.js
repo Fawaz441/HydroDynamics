@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
 
 const ReportLeakage = ({navigation}) => {
     const {isAuthenticated} = useSelector(state => state.auth);
-    const [showSuccess, setShowSuccess] = useState(true);
+    const [showSuccess, setShowSuccess] = useState(false);
     const hideSuccessModal = () => setShowSuccess(false);
     const showSuccessModal = () => setShowSuccess(true);
     const closePage = () => {

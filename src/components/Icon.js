@@ -1,15 +1,17 @@
 import React from 'react';
-import {Image, TouchableWithoutFeedback} from 'react-native';
+import {Image, TouchableWithoutFeedback, View} from 'react-native';
 
 const Icon = ({icon, width, height, onPress, resizeMode, style = {}}) => {
     if (onPress) {
         return (
             <TouchableWithoutFeedback {...{onPress}}>
-                <Image
-                    source={icon}
-                    style={{width, height, ...style}}
-                    resizeMode="cover"
-                />
+                <View style={{height: 20, width: 20}}>
+                    <Image
+                        source={icon}
+                        style={{width, height, ...style}}
+                        resizeMode="cover"
+                    />
+                </View>
             </TouchableWithoutFeedback>
         );
     }

@@ -9,7 +9,7 @@ const BuyWater = ({next}) => {
     const {width, height} = useWindowDimensions();
     return (
         <View style={{flex: 1, backgroundColor: '#fff'}}>
-            <ScrollView>
+            <ScrollView style={{paddingBottom: 150}}>
                 <Image
                     source={require('../../assets/images/blob2.png')}
                     style={{height: (302 / 812) * height, width}}

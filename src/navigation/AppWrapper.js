@@ -80,10 +80,6 @@ const Navigation = () => {
                 component={Registration}
             />
             <Stack.Screen name={SCREENS.login} component={Login} />
-            <Stack.Screen
-                name={SCREENS.reportleakage}
-                component={ReportLeakage}
-            />
             <Stack.Screen name={SCREENS.buywater} component={BuyWater} />
         </Stack.Navigator>
     );

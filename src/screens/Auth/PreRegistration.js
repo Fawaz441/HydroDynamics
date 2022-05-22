@@ -9,6 +9,7 @@ import {
     Image,
     useWindowDimensions,
     TouchableWithoutFeedback,
+    ScrollView,
 } from 'react-native';
 import Input from '../../components/Inputs/Input';
 import ICONS from '../../assets/icons';
@@ -31,7 +32,9 @@ const PreRegistration = ({navigation}) => {
     );
     return (
         <SafeAreaView style={{backgroundColor: COLORS.white, flex: 1}}>
-            <View style={{marginTop: 80}}>
+            <ScrollView
+                style={{marginTop: 80}}
+                showsVerticalScrollIndicator={false}>
                 <Text
                     style={[
                         TEXTS.poppinsRegular,
@@ -95,7 +98,7 @@ const PreRegistration = ({navigation}) => {
                         </View>
                     </TouchableWithoutFeedback>
                 </View>
-            </View>
+            </ScrollView>
         </SafeAreaView>
     );
 };

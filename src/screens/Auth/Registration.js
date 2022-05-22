@@ -51,7 +51,9 @@ const Registration = ({navigation}) => {
                 </View>
                 <BackButton transparent />
             </View>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                style={{paddingBottom: 300}}>
                 <View style={{marginTop: 13.39, marginHorizontal: 30}}>
                     <Input
                         placeholder={'Name'}
@@ -167,7 +169,7 @@ const Registration = ({navigation}) => {
                                 STYLES.centersXY,
                                 {marginBottom: 44},
                             ]}>
-                            <Text style={TEXTS.primary}>
+                            <Text style={[TEXTS.primary, {color: '#1D1617'}]}>
                                 Already have an account?{' '}
                             </Text>
                             <Text

@@ -79,10 +79,7 @@ const styles = StyleSheet.create({
 const Home = ({navigation}) => {
     const [showLimit, setShowLimit] = useState(false);
     const [statisticType, setStatisticType] = useState('daily');
-    const reportLeakage = getNavigateFunction(
-        navigation,
-        SCREENS.reportleakage,
-    );
+    const reportLeakage = goToTablessScreen(navigation, SCREENS.reportleakage);
     const buyWater = goToTablessScreen(navigation, SCREENS.buywater);
 
     return (

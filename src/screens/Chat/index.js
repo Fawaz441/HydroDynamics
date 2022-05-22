@@ -44,13 +44,16 @@ const styles = StyleSheet.create({
         right: 40,
         ...STYLES.row,
         ...STYLES.centersY,
+        zIndex: 1,
     },
     messageInput: {
         flex: 1,
         ...TEXTS.abeezee,
+        color: 'rgba(0, 0, 0, 1)',
+        padding: 0,
     },
     messageInputBox: {
-        padding: 16,
+        padding: 10,
         borderWidth: 1,
         borderColor: '#E8E6EA',
         borderRadius: 15,
@@ -178,7 +181,7 @@ const Chat = ({navigation}) => {
                     <TextInput
                         style={styles.messageInput}
                         placeholder={'Your message'}
-                        placeholderTextColor={'rgba(0, 0, 0, 0.4)'}
+                        placeholderTextColor={'rgba(0, 0, 0, 1)'}
                         onChangeText={setText}
                         value={text}
                     />

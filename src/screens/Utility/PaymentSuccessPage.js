@@ -7,6 +7,7 @@ import Success from '../../components/Utils/Success';
 import TopBar from '../../components/Utils/TopBar';
 import {SCREENS} from '../../navigation/screens';
 import {getNavigateFunction} from '../../utils/functions';
+import {SUCCESSFUL_PAYMENT} from '../../utils/texts';
 
 const PaymentSuccessPage = ({navigation}) => {
     return (
@@ -19,7 +20,7 @@ const PaymentSuccessPage = ({navigation}) => {
                 <NotificationButton />
             </TopBar>
             <View style={[{flex: 1}, STYLES.centersXY]}>
-                <Success />
+                <Success text={SUCCESSFUL_PAYMENT} />
             </View>
         </Container>
     );

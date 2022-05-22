@@ -139,7 +139,7 @@ const BottomTabNavigator = () => {
                     paddingHorizontal: 15,
                     paddingTop: 16,
                     borderTopWidth: 0,
-                    elevation: 0,
+                    elevation: 1,
                     ...STYLES.absolute,
                     bottom: 0,
                     left: 0,
