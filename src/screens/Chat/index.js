@@ -7,6 +7,7 @@ import {
     TouchableWithoutFeedback,
     TextInput,
     FlatList,
+    ScrollView,
 } from 'react-native';
 import Container from '../../components/Utils/Container';
 import TopBar from '../../components/Utils/TopBar';
@@ -15,36 +16,47 @@ import {STYLES, TEXTS, COLORS} from '../../assets/styles';
 import TimeLineSeperator from './TimeLineSeperator';
 import ChatMessage from './ChatMessage';
 import {getGoBackFunction} from '../../utils/functions';
-import {BOTTOM_TAB_HEIGHT} from '../../utils/constants';
+import {BOTTOM_TAB_HEIGHT, height} from '../../utils/constants';
 import Icon from '../../components/Icon';
 import ICONS from '../../assets/icons';
 import moment from 'moment';
 import SpaceFiller from '../../components/Utils/SpaceFiller';
+import PlatformAwareKeyboardAvoidingView from '../../components/Utils/PlatformAwareKeyboardAvoidingView';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import KeyboardAvoidingView from 'react-native/Libraries/Components/Keyboard/KeyboardAvoidingView';
 
 const styles = StyleSheet.create({
-    content: {marginHorizontal: 40},
+    content: {marginHorizontal: 40, flex: 1},
     logoSpace: {
         ...STYLES.row,
         ...STYLES.centersY,
+        height: 100,
+        flexBasis: 100,
     },
     messagesContainer: {
         marginTop: 17,
+        paddingBottom: 100,
+        // backgroundColor: 'red',
+        // ...STYLES.absolute,
+        // height: '100%',
+        // width: '100%',
+        // top: 0,
+        // left: 0,
+        // flex: 1,
     },
     timelineSeperator: {
         ...STYLES.row,
         ...STYLES.centersY,
     },
     sendMessageBox: {
-        ...STYLES.absolute,
-        bottom: BOTTOM_TAB_HEIGHT,
+        // ...STYLES.absolute,
+        bottom: 0 + BOTTOM_TAB_HEIGHT,
+        backgroundColor: COLORS.white,
+        width: '100%',
         height: 66,
         paddingBottom: 16,
-        backgroundColor: COLORS.white,
-        left: 40,
-        right: 40,
         ...STYLES.row,
         ...STYLES.centersY,
-        zIndex: 1,
     },
     messageInput: {
         flex: 1,
@@ -149,55 +161,62 @@ const Chat = ({navigation}) => {
                         </Text>
                     </View>
                 </View>
-                <FlatList
-                    bounces={false}
-                    showsVerticalScrollIndicator={false}
-                    ListHeaderComponent={() => (
-                        <TimeLineSeperator date={'Today'} />
-                    )}
-                    ListFooterComponent={() => (
-                        <SpaceFiller space={BOTTOM_TAB_HEIGHT + 300} />
-                    )}
-                    style={styles.messagesContainer}
-                    // bounces={false}
-                    data={messages}
-                    ref={messagesRef}
-                    onContentSizeChange={() =>
-                        messagesRef.current?.scrollToEnd()
-                    }
-                    renderItem={({item}) => (
-                        <ChatMessage
-                            message={item.text}
-                            isReply={item.is_reply}
-                            timeStamp={item.timeStamp}
-                            is_delivered={true}
-                        />
-                    )}
-                    keyExtractor={item => item.id}
-                />
-            </View>
-            <View style={styles.sendMessageBox}>
-                <View style={styles.messageInputBox}>
-                    <TextInput
-                        style={styles.messageInput}
-                        placeholder={'Your message'}
-                        placeholderTextColor={'rgba(0, 0, 0, 1)'}
-                        onChangeText={setText}
-                        value={text}
-                    />
-                    <Icon
-                        icon={ICONS.plus}
-                        width={16}
-                        height={16}
-                        style={{flexShrink: 0, marginLeft: 15}}
-                    />
+                <View
+                    style={{
+                        flex: 1,
+                        flexBasis: height - 266 - BOTTOM_TAB_HEIGHT,
+                    }}>
+                    <TimeLineSeperator date={'Today'} />
+                    <ScrollView
+                        bounces={false}
+                        showsVerticalScrollIndicator={false}
+                        contentContainerStyle={styles.messagesContainer}
+                        onContentSizeChange={() =>
+                            messagesRef?.current?.scrollToEnd()
+                        }
+                        ref={messagesRef}>
+                        {messages.map(item => (
+                            <ChatMessage
+                                message={item.text}
+                                isReply={item.is_reply}
+                                timeStamp={item.timeStamp}
+                                is_delivered={true}
+                                key={item.id}
+                            />
+                        ))}
+                    </ScrollView>
                 </View>
-                <TouchableWithoutFeedback onPress={sendMessage}>
-                    <View style={styles.sendIcon}>
-                        <Icon icon={ICONS.send} width={20} height={20} />
-                    </View>
-                </TouchableWithoutFeedback>
             </View>
+            <PlatformAwareKeyboardAvoidingView
+                // keyboardVerticalOffset={1000}
+                style={{
+                    height: 66,
+                    flexBasis: 66,
+                    marginHorizontal: 40,
+                }}>
+                <View style={styles.sendMessageBox}>
+                    <View style={styles.messageInputBox}>
+                        <TextInput
+                            style={styles.messageInput}
+                            placeholder={'Your message'}
+                            placeholderTextColor={'rgba(0, 0, 0, 1)'}
+                            onChangeText={setText}
+                            value={text}
+                        />
+                        <Icon
+                            icon={ICONS.plus}
+                            width={16}
+                            height={16}
+                            style={{flexShrink: 0, marginLeft: 15}}
+                        />
+                    </View>
+                    <TouchableWithoutFeedback onPress={sendMessage}>
+                        <View style={styles.sendIcon}>
+                            <Icon icon={ICONS.send} width={20} height={20} />
+                        </View>
+                    </TouchableWithoutFeedback>
+                </View>
+            </PlatformAwareKeyboardAvoidingView>
         </Container>
     );
 };

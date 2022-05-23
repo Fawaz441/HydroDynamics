@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
     },
     authButtonContainer: {
+        maxHeight: 200,
         ...STYLES.absolute,
         width,
         bottom: 0,

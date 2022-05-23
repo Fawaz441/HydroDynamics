@@ -11,6 +11,7 @@ const TopBar = ({children}) => {
                     marginTop: 50 - StatusBar.currentHeight,
                     paddingBottom: 10,
                     paddingHorizontal: 15,
+                    maxHeight: 100,
                 },
                 STYLES.row,
                 STYLES.spaced,
