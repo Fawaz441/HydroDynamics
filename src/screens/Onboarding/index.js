@@ -17,7 +17,10 @@ const Onboarding = ({navigation}) => {
         navigation,
         SCREENS.preregistration,
     );
-    const reportLeakage = goToTablessScreen(navigation, SCREENS.reportleakage);
+    const reportLeakage = getNavigateFunction(
+        navigation,
+        SCREENS.unauthenticatedreportleakage,
+    );
     return (
         <ScrollView
             horizontal

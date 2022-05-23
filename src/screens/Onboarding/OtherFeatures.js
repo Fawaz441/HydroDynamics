@@ -3,6 +3,7 @@ import React from 'react';
 import {View, Image, ScrollView, Text} from 'react-native';
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
 import {STYLES, TEXTS, COLORS} from '../../assets/styles';
+import SpaceFiller from '../../components/Utils/SpaceFiller';
 import StepButton from './utils/StepButton';
 
 const OtherFeatures = ({next}) => {
@@ -25,6 +26,7 @@ const OtherFeatures = ({next}) => {
                         Other Features
                     </Text>
                 </View>
+                <SpaceFiller space={200} />
             </ScrollView>
             <StepButton step={4} onPress={next} />
         </View>

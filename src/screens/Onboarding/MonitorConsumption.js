@@ -3,6 +3,7 @@ import React from 'react';
 import {View, Image, ScrollView, Text} from 'react-native';
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions';
 import {STYLES, TEXTS, COLORS} from '../../assets/styles';
+import SpaceFiller from '../../components/Utils/SpaceFiller';
 import StepButton from './utils/StepButton';
 
 const MonitorConsumption = ({next}) => {
@@ -40,6 +41,7 @@ const MonitorConsumption = ({next}) => {
                         </Text>
                     </View>
                 </View>
+                <SpaceFiller space={200} />
             </ScrollView>
             <StepButton step={3} onPress={() => next(3)} />
         </View>

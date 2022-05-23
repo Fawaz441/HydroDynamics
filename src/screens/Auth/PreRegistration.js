@@ -19,6 +19,7 @@ import {getNavigateFunction} from '../../utils/functions';
 import {SCREENS} from '../../navigation/screens';
 import InputIcon from '../../components/Icon';
 import OrText from './utils/OrText';
+import PlatformAwareKeyboardAvoidingView from '../../components/Utils/PlatformAwareKeyboardAvoidingView';
 
 const PreRegistration = ({navigation}) => {
     const {height} = useWindowDimensions();
@@ -31,74 +32,82 @@ const PreRegistration = ({navigation}) => {
         [],
     );
     return (
-        <SafeAreaView style={{backgroundColor: COLORS.white, flex: 1}}>
-            <ScrollView
-                style={{marginTop: 80}}
-                showsVerticalScrollIndicator={false}>
-                <Text
-                    style={[
-                        TEXTS.poppinsRegular,
-                        STYLES.centerText,
-                        {color: COLORS.primary},
-                    ]}>
-                    Hey there,
-                </Text>
-                <Text
-                    style={[
-                        TEXTS.header2,
-                        STYLES.centerText,
-                        {marginTop: 5.13},
-                    ]}>
-                    Create an Account
-                </Text>
-                <View style={{marginTop: 14.52, ...STYLES.centersXY}}>
-                    <Image
-                        style={{width: 100, height: 100}}
-                        resizeMode="cover"
-                        source={require('../../assets/images/logo.png')}
-                    />
-                </View>
-                <View style={{marginTop: 87, marginHorizontal: 30}}>
-                    <Input
-                        icon={
-                            <InputIcon
-                                icon={ICONS.profile}
-                                height={18}
-                                width={18}
-                            />
-                        }
-                        placeholder="Meter ID"
-                    />
-                </View>
-                <View
-                    style={{
-                        marginHorizontal: 30,
-                        marginTop: (238 / 812) * height,
-                    }}>
-                    <FilledButton
-                        text={'Register'}
-                        fullWidth
-                        action={goToRegistration}
-                    />
-                    <OrText />
-                    <TouchableWithoutFeedback onPress={goToLogin}>
-                        <View
-                            style={[STYLES.mt_24, STYLES.row, STYLES.centersX]}>
-                            <Text style={styles.belowText}>
-                                Already have an account?
-                            </Text>
-                            <Text
+        <SafeAreaView
+            style={{backgroundColor: COLORS.white, flex: 1}}
+            edges={['left', 'right']}>
+            <PlatformAwareKeyboardAvoidingView style={{flex: 1}}>
+                <ScrollView
+                    style={{marginTop: 80}}
+                    showsVerticalScrollIndicator={false}>
+                    <Text
+                        style={[
+                            TEXTS.poppinsRegular,
+                            STYLES.centerText,
+                            {color: COLORS.primary},
+                        ]}>
+                        Hey there,
+                    </Text>
+                    <Text
+                        style={[
+                            TEXTS.header2,
+                            STYLES.centerText,
+                            {marginTop: 5.13},
+                        ]}>
+                        Create an Account
+                    </Text>
+                    <View style={{marginTop: 14.52, ...STYLES.centersXY}}>
+                        <Image
+                            style={{width: 100, height: 100}}
+                            resizeMode="cover"
+                            source={require('../../assets/images/logo.png')}
+                        />
+                    </View>
+                    <View style={{marginTop: 87, marginHorizontal: 30}}>
+                        <Input
+                            icon={
+                                <InputIcon
+                                    icon={ICONS.profile}
+                                    height={18}
+                                    width={18}
+                                />
+                            }
+                            placeholder="Meter ID"
+                        />
+                    </View>
+                    <View
+                        style={{
+                            marginHorizontal: 30,
+                            marginTop: (238 / 812) * height,
+                        }}>
+                        <FilledButton
+                            text={'Register'}
+                            fullWidth
+                            action={goToRegistration}
+                        />
+                        <OrText />
+                        <TouchableWithoutFeedback onPress={goToLogin}>
+                            <View
                                 style={[
-                                    styles.belowText,
-                                    {color: COLORS.primary},
+                                    STYLES.mt_24,
+                                    STYLES.row,
+                                    STYLES.centersX,
                                 ]}>
-                                {' '}
-                                Login
-                            </Text>
-                        </View>
-                    </TouchableWithoutFeedback>
-                </View>
-            </ScrollView>
+                                <Text style={styles.belowText}>
+                                    Already have an account?
+                                </Text>
+                                <Text
+                                    style={[
+                                        styles.belowText,
+                                        {color: COLORS.primary},
+                                    ]}>
+                                    {' '}
+                                    Login
+                                </Text>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </View>
+                </ScrollView>
+            </PlatformAwareKeyboardAvoidingView>
         </SafeAreaView>
     );
 };

@@ -57,11 +57,6 @@ const Navigation = () => {
                 <Drawer.Screen name={SCREENS.profile} component={Profile} />
                 <Drawer.Screen name={SCREENS.about} component={About} />
                 <Drawer.Screen name={'TablessPages'} component={TablessPages} />
-                {/* <Drawer.Screen name={SCREENS.buywater} component={BuyWater} /> */}
-                {/* <Drawer.Screen
-                    name={SCREENS.customerservice}
-                    component={CustomerService}
-                /> */}
             </Drawer.Navigator>
         );
     }
@@ -81,6 +76,10 @@ const Navigation = () => {
             />
             <Stack.Screen name={SCREENS.login} component={Login} />
             <Stack.Screen name={SCREENS.buywater} component={BuyWater} />
+            <Stack.Screen
+                name={SCREENS.unauthenticatedreportleakage}
+                component={ReportLeakage}
+            />
         </Stack.Navigator>
     );
 };

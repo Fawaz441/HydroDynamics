@@ -15,4 +15,5 @@ export const SCREENS = {
     payment: 'Payment',
     cardentry: 'Card Entry',
     paymentsuccess: 'Payment Success',
+    unauthenticatedreportleakage: 'UnAuthenticated Leakage Report',
 };
