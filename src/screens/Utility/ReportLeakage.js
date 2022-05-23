@@ -72,9 +72,13 @@ const ReportLeakage = ({navigation}) => {
     const [showSuccess, setShowSuccess] = useState(false);
     const hideSuccessModal = () => setShowSuccess(false);
     const showSuccessModal = () => setShowSuccess(true);
+    const goBackAction = getNavigateFunction(
+        navigation,
+        isAuthenticated ? SCREENS.home : SCREENS.onboarding,
+    );
     const closePage = () => {
         hideSuccessModal();
-        getNavigateFunction(navigation, SCREENS.home);
+        goBackAction();
     };
     return (
         <Container backgroundColor={COLORS.white}>
@@ -106,7 +110,7 @@ const ReportLeakage = ({navigation}) => {
                 </Modal>
             )}
             <TopBar>
-                <BackButton onPress={getGoBackFunction(navigation)} />
+                <BackButton onPress={goBackAction} />
                 <Text
                     style={
                         (TEXTS.poppinsRegular,

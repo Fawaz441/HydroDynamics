@@ -45,8 +45,6 @@ const styles = StyleSheet.create({
         fontSize: 12,
     },
 });
-const url =
-    'https://api.honest.properties/dev/api/v1/user/profileImage?file_name=file.jpeg';
 
 const Profile = ({navigation}) => {
     return (
@@ -61,8 +59,7 @@ const Profile = ({navigation}) => {
                     <Image
                         style={styles.image}
                         resizeMode="cover"
-                        source={{uri: url}}
-                        onLoad={e => console.log(e)}
+                        source={IMAGES.profile_image}
                     />
                 </View>
                 <View style={styles.userDetails}>
